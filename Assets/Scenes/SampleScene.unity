@@ -297,6 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124334834}
+  - component: {fileID: 124334835}
   m_Layer: 0
   m_Name: BotLeft
   m_TagString: Untagged
@@ -318,6 +319,22 @@ Transform:
   m_Father: {fileID: 519307142}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124334835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124334833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos: {fileID: 1367405554}
+  downPos: {fileID: 1811065187}
+  rightPos: {fileID: 251038260}
+  leftPos: {fileID: 0}
 --- !u!4 &138823561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f75faf0014f0344a9acc9aba4bc4e5b, type: 3}
@@ -501,6 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251038261}
+  - component: {fileID: 251038262}
   m_Layer: 0
   m_Name: BotRight
   m_TagString: Untagged
@@ -522,6 +540,22 @@ Transform:
   m_Father: {fileID: 519307142}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251038262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251038260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos: {fileID: 1158890521}
+  downPos: {fileID: 0}
+  rightPos: {fileID: 0}
+  leftPos: {fileID: 124334833}
 --- !u!4 &277856998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f75faf0014f0344a9acc9aba4bc4e5b, type: 3}
@@ -1585,6 +1619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158890522}
+  - component: {fileID: 1158890523}
   m_Layer: 0
   m_Name: MidRight
   m_TagString: Untagged
@@ -1606,6 +1641,22 @@ Transform:
   m_Father: {fileID: 519307142}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158890523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158890521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos: {fileID: 1880520682}
+  downPos: {fileID: 251038260}
+  rightPos: {fileID: 0}
+  leftPos: {fileID: 1367405554}
 --- !u!1 &1172992476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2046,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1367405555}
+  - component: {fileID: 1367405556}
   m_Layer: 0
   m_Name: MidLeft
   m_TagString: Untagged
@@ -2016,6 +2068,22 @@ Transform:
   m_Father: {fileID: 519307142}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367405556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367405554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos: {fileID: 1811065187}
+  downPos: {fileID: 124334833}
+  rightPos: {fileID: 1158890521}
+  leftPos: {fileID: 0}
 --- !u!4 &1397945736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f75faf0014f0344a9acc9aba4bc4e5b, type: 3}
@@ -2561,6 +2629,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811065188}
+  - component: {fileID: 1811065189}
   m_Layer: 0
   m_Name: TopLeft
   m_TagString: Untagged
@@ -2582,6 +2651,22 @@ Transform:
   m_Father: {fileID: 519307142}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811065189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811065187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos: {fileID: 0}
+  downPos: {fileID: 1367405554}
+  rightPos: {fileID: 1880520682}
+  leftPos: {fileID: 0}
 --- !u!1 &1844105190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2707,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880520683}
+  - component: {fileID: 1880520684}
   m_Layer: 0
   m_Name: TopRight
   m_TagString: Untagged
@@ -2643,6 +2729,22 @@ Transform:
   m_Father: {fileID: 519307142}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880520684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880520682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos: {fileID: 251038260}
+  downPos: {fileID: 1158890521}
+  rightPos: {fileID: 0}
+  leftPos: {fileID: 1811065187}
 --- !u!4 &1914192821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f75faf0014f0344a9acc9aba4bc4e5b, type: 3}
@@ -2785,17 +2887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalMovementTime: 1
-  topLeft: {fileID: 1811065188}
-  midLeft: {fileID: 1367405555}
-  botLeft: {fileID: 124334834}
-  topRight: {fileID: 1880520683}
-  midRight: {fileID: 1158890522}
-  botRight: {fileID: 251038261}
-  currentPos: 
-  upPos: {fileID: 0}
-  downPos: {fileID: 0}
-  leftPos: {fileID: 0}
-  rightPos: {fileID: 0}
+  cubeLeftSide: {fileID: 6695909}
+  cubeRightSide: {fileID: 1459829344}
+  currentPos: {fileID: 1811065187}
 --- !u!1001 &2033043678
 PrefabInstance:
   m_ObjectHideFlags: 0

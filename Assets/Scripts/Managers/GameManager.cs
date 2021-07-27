@@ -4,50 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+
 
     [SerializeField]
     private float totalMovementTime;
 
     private GameObject player;
-
-   
     private bool mooving = false;
 
     [SerializeField]
-    private Transform topLeft;
+    private GameObject cubeLeftSide;
     [SerializeField]
-    private Transform midLeft;
-    [SerializeField]
-    private Transform botLeft;
-    [SerializeField]
-    private Transform topRight;
-    [SerializeField]
-    private Transform midRight;
-    [SerializeField]
-    private Transform botRight;
+    private GameObject cubeRightSide;
 
     [SerializeField]
-    private string currentPos;
-
-    [SerializeField]
-    private Transform upPos;
-    [SerializeField]
-    private Transform downPos;
-    [SerializeField]
-    private Transform leftPos;
-    [SerializeField]
-    private Transform rightPos;
+    private GameObject currentPos;
 
 
     public static GameManager instance;
 
-    
+
 
     private void Awake()
     {
         player = FindObjectOfType<Player>().gameObject;
-        
+
         if (GameManager.instance)
         {
             Destroy(base.gameObject);
@@ -57,12 +38,12 @@ public class GameManager : MonoBehaviour
             GameManager.instance = this;
         }
 
-       
+
     }
 
     private void Start()
     {
-        currentPos = "topLeft";
+        
     }
 
     public void movePlayer(string moveLocation)
@@ -70,152 +51,151 @@ public class GameManager : MonoBehaviour
         if (!mooving)
         {
             mooving = true;
-            checkAvailableLocations();
             switch (moveLocation)
             {
                 case "right":
-                    if(rightPos != null)
+                    if (currentPos.GetComponent<MovePoint>().rightPos != null)
                     {
-                        StartCoroutine(moveCoroutine(rightPos));
+                        player.transform.parent = cubeRightSide.transform;
+                        StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos));
+                        
                     }
                     else
                     {
-                        Debug.Log("cant go there");
-                        mooving = false;
+                        defaultState();
                     }
                     break;
                 case "left":
-                    if (leftPos != null)
+                    if (currentPos.GetComponent<MovePoint>().leftPos != null)
                     {
-                        StartCoroutine(moveCoroutine(leftPos));
+                        player.transform.parent = cubeLeftSide.transform;
+                        StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos));
                     }
                     else
                     {
-                        Debug.Log("cant go there");
-                        mooving = false;
+                        defaultState();
                     }
                     break;
                 case "down":
-                    if (downPos != null)
+                    if (currentPos.GetComponent<MovePoint>().downPos != null)
                     {
-                        StartCoroutine(moveCoroutine(downPos));
+                        if(currentPos.gameObject.name == "BotLeft" || currentPos.gameObject.name == "BotRight")
+                        {
+                           
+                            StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().downPos, "up"));
+                           
+                        } 
+                        else
+                        {
+                            StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().downPos));
+                        }
+                        
                     }
                     else
                     {
-                        Debug.Log("cant go there");
-                        mooving = false;
+                        defaultState();
                     }
                     break;
                 case "up":
-                    if (upPos != null)
+                    if (currentPos.GetComponent<MovePoint>().upPos != null)
                     {
-                        StartCoroutine(moveCoroutine(upPos));
+                        if (currentPos.gameObject.name == "TopLeft" || currentPos.gameObject.name == "TopRight")
+                        {
+                                StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().upPos, "down"));
+                        }
+                        else
+                        {
+                            StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().upPos));
+                        }
                     }
                     else
                     {
-                        Debug.Log("cant go there");
-                        mooving = false;
+                        defaultState();
                     }
                     break;
                 default:
-                    Debug.Log("cant go there");
-                    mooving = false;
+                    defaultState();
                     break;
             }
-            
+
         }
     }
 
-    private void checkAvailableLocations()
+    private void defaultState()
     {
-        switch (currentPos)
-        {
-            case "topLeft":
-                upPos = null;
-                downPos = midLeft;
-                rightPos = topRight;
-                leftPos = null;
-                break;
-            case "midLeft":
-                upPos = topLeft;
-                downPos = botLeft;
-                rightPos = midRight;
-                leftPos = null;
-                break;
-            case "botLeft":
-                upPos = midLeft;
-                downPos = null;
-                rightPos = botRight;
-                leftPos = null;
-                break;
-            case "topRight":
-                upPos = null;
-                downPos = midRight;
-                rightPos = null;
-                leftPos = topLeft;
-                break;
-            case "midRight":
-                upPos = topRight;
-                downPos = botRight;
-                rightPos = null;
-                leftPos = midLeft;
-                break;
-            case "botRight":
-                upPos = midRight;
-                downPos = null;
-                rightPos = null;
-                leftPos = botLeft;
-                break;
-            default:
-                Debug.Log("Something went wrong");
-                break;
-        }
+        Debug.Log("cant go there");
+        mooving = false;
     }
+   
 
-    IEnumerator moveCoroutine(Transform target)
+    IEnumerator moveCoroutine(GameObject target)
     {
         Vector3 startpos = player.transform.position;
-        
+
         float currentMovementTime = 0f;
 
-        
-        while (player.transform.position != target.position)
+
+        while (player.transform.position != target.transform.position)
         {
             currentMovementTime += Time.deltaTime;
-            player.transform.position = Vector3.Lerp(startpos, target.position, currentMovementTime / totalMovementTime);
+            player.transform.position = Vector3.Lerp(startpos, target.transform.position, currentMovementTime / totalMovementTime);
             yield return new WaitForEndOfFrame();
         }
-        findMyCurrentPos(target);
+        currentPos = target;
         mooving = false;
     }
 
-    private void findMyCurrentPos(Transform target)
+    IEnumerator rotateMoveCoroutine(GameObject target,string rotateDirection)
     {
-        if(target == topLeft)
+        Debug.Log(rotateDirection);
+
+        Quaternion endRotation =  Quaternion.Euler(player.transform.parent.transform.eulerAngles.x + 90, 0, 0);
+        
+
+        if (rotateDirection == "down")
         {
-            currentPos = "topLeft";
+            endRotation = Quaternion.Euler((player.transform.parent.transform.eulerAngles.x -90),0,0);
+            
+
         }
-        else if (target == midLeft)
+       
+
+        float currentMovementTime = 0f; 
+
+        while (player.transform.parent.transform.rotation != endRotation )
         {
-            currentPos = "midLeft";
-        }
-        else if (target == botLeft)
-        {
-            currentPos = "botLeft";
-        }
-        else if (target == topRight)
-        {
-            currentPos = "topRight";
-        }
-        else if (target == midRight)
-        {
-            currentPos = "midRight";
-        }
-        else if (target == botRight)
-        {
-            currentPos = "botRight";
+            currentMovementTime += Time.deltaTime;
+
+
+            player.transform.parent.transform.rotation = Quaternion.Lerp(player.transform.parent.transform.rotation,endRotation, currentMovementTime / totalMovementTime);
+
+
+            yield return new WaitForEndOfFrame();
         }
 
+        Quaternion endRotationPlayer = Quaternion.Euler(player.transform.eulerAngles.x - 90, 0, 0);
+        if (rotateDirection == "down")
+        {
+            endRotationPlayer = Quaternion.Euler(player.transform.eulerAngles.x + 90, 0, 0);
+
+        }
+
+        currentMovementTime = 0;
+        Vector3 startpos = player.transform.position;
+        while ( player.transform.position != target.transform.position)
+        {
+            currentMovementTime += Time.deltaTime;
+
+            player.transform.position = Vector3.Lerp(startpos, target.transform.position, currentMovementTime / totalMovementTime);
+
+            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, endRotationPlayer, currentMovementTime / totalMovementTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        currentPos = target;
+        mooving = false;
+
     }
+
 
 }
