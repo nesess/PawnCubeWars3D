@@ -6,8 +6,7 @@ public class ClonePlayer : MonoBehaviour
 {
     public GameObject playerOriginal;
     public GameObject playerContainer;
-    public int cloneIndex = 2;
-    public int numOfPlayers = 1;
+    public int numOfPlayers = 2;
 
     bool cloned = false;
 
@@ -19,24 +18,40 @@ public class ClonePlayer : MonoBehaviour
     void OnTriggerEnter()
     {
         if (!cloned)
-            CreatePlayers(1 * cloneIndex - 1);
+            CreatePlayers(numOfPlayers);
     }
 
     void CreatePlayers(int playerNumber)
     {
-        for (int i = 0; i < playerNumber; i++)
+        for (int i = 0; i < 2 * playerNumber-numOfPlayers; i++)
         {
-            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x - 1f, playerOriginal.transform.position.y -1.6f, playerOriginal.transform.position.z-1f), playerOriginal.transform.rotation);
+            if (i<3)
+            {
+            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x +  -2.6f, playerOriginal.transform.position.y - 1.6f, playerOriginal.transform.position.z + (i*0.3f + 1f) * -1.25f), playerOriginal.transform.rotation);
             PlayerClone.transform.parent = playerContainer.transform;
-            PlayerClone.name = "PlayerClone" + (i + 1);
-            cloned = true;
+            PlayerClone.name = "PlayerClone" + (i + 1); 
+            }
+            else if (i>=3 && i<6)
+            {
+                GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + -3.3f, playerOriginal.transform.position.y - 1.6f, playerOriginal.transform.position.z + ((i-3) * 0.3f + 1f) * -1.25f), playerOriginal.transform.rotation);
+                PlayerClone.transform.parent = playerContainer.transform;
+                PlayerClone.name = "PlayerClone" + (i + 1);
+            }
+            else
+            {
+                GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + -3.6f, playerOriginal.transform.position.y - 1.6f, playerOriginal.transform.position.z + ((i - 6) * 0.3f + 1f) * -1.25f), playerOriginal.transform.rotation);
+                PlayerClone.transform.parent = playerContainer.transform;
+                PlayerClone.name = "PlayerClone" + (i + 1);
+            }
         }
+
+        cloned = true;
     }
 
     void Update()
     {
         if(cloned)
-        playerContainer.transform.position = playerOriginal.transform.position + new Vector3(-1f, 0, 0);
+        playerContainer.transform.position = playerOriginal.transform.position ;
     }
 }
 
