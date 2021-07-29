@@ -18,9 +18,9 @@ public class ThreePlayers : MonoBehaviour
         // Start is called before the first frame update
         void Start()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
-            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerParent.transform.position.x + (i * 0.25f + 2.1f) * 1.7f, playerParent.transform.position.y - 2f, playerParent.transform.position.z + -1.1f), playerParent.transform.rotation, playerParent.transform);
+            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerParent.transform.position.x + (i * 0.25f -0.05f) * 1.7f, playerParent.transform.position.y +0.1f, playerParent.transform.position.z + 0f), playerParent.transform.rotation, playerParent.transform);
             
             PlayerClone.name = "PlayerClone" + (i + 1);
         }

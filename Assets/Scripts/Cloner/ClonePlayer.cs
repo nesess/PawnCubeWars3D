@@ -27,7 +27,7 @@ public class ClonePlayer : MonoBehaviour
         {
             if (i < 3)
             {
-                GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + (i * -0.2f + 1f) * -1.7f, playerOriginal.transform.position.y - 1.6f, playerOriginal.transform.position.z + -2f), playerOriginal.transform.rotation);
+                GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + (i * 0.2f + 1f) * 3f, playerOriginal.transform.position.y - 1.6f, playerOriginal.transform.position.z + -2f), playerOriginal.transform.rotation);
                 PlayerClone.transform.parent = playerContainer.transform;
                 PlayerClone.name = "PlayerClone" + (i + 1);
             }
