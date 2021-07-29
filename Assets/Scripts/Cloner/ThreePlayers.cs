@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestWith2Players : MonoBehaviour
+public class ThreePlayers : MonoBehaviour
 {
     public GameObject playerOriginal;
     public GameObject playerContainer;
@@ -10,13 +10,13 @@ public class TestWith2Players : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0;i<2;i++)
+        for (int i = 0; i < 2; i++)
         {
-            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + 3.8f, playerOriginal.transform.position.y - 1.6f, playerOriginal.transform.position.z + (i * 0.3f + 1f) * -1.5f), playerOriginal.transform.rotation);
+            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + (i * 0.25f + 2.1f) * 1.7f, playerOriginal.transform.position.y - 2f, playerOriginal.transform.position.z + -1.1f), playerOriginal.transform.rotation);
             PlayerClone.transform.parent = playerContainer.transform;
             PlayerClone.name = "PlayerClone" + (i + 1);
         }
-        
+
     }
 
     // Update is called once per frame
