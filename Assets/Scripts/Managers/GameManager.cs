@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject currentPos;
 
+    private bool cubeTurning = false;
+
 
     public static GameManager instance;
 
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //player.transform.parent.transform.rotation = Quaternion.Euler(270,0,0);
+       
         
     }
 
@@ -147,31 +151,24 @@ public class GameManager : MonoBehaviour
 
     IEnumerator rotateMoveCoroutine(GameObject target,string rotateDirection)
     {
-        Debug.Log(rotateDirection);
 
-        Quaternion endRotation =  Quaternion.Euler(player.transform.parent.transform.eulerAngles.x + 90, 0, 0);
+
+        float turnDegree = 90;
+        if(rotateDirection == "down")
+        {
+            turnDegree = -90;
+        }
+        float currentMovementTime = 0f;
+
+        cubeTurning = false;
+        StartCoroutine(LinearRotationRoutine(turnDegree, Vector3.right, 1));
+        while (!cubeTurning )
+        {
+
+            yield return null;
+        }
         
-
-        if (rotateDirection == "down")
-        {
-            endRotation = Quaternion.Euler((player.transform.parent.transform.eulerAngles.x -90),0,0);
-            
-
-        }
-       
-
-        float currentMovementTime = 0f; 
-
-        while (player.transform.parent.transform.rotation != endRotation )
-        {
-            currentMovementTime += Time.deltaTime;
-
-
-            player.transform.parent.transform.rotation = Quaternion.Lerp(player.transform.parent.transform.rotation,endRotation, currentMovementTime / totalMovementTime);
-
-
-            yield return new WaitForEndOfFrame();
-        }
+        
 
         Quaternion endRotationPlayer = Quaternion.Euler(player.transform.eulerAngles.x - 90, 0, 0);
         if (rotateDirection == "down")
@@ -198,4 +195,21 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+    IEnumerator LinearRotationRoutine(float degrees, Vector3 axis, float duration)
+    {
+        Quaternion initialRotation = player.transform.parent.transform.rotation;
+        Quaternion finalRotation = initialRotation * Quaternion.AngleAxis(degrees, axis);
+
+        float timeStart = Time.time;
+        float timeEnd = timeStart + duration;
+
+        while (Time.time < timeEnd)
+        {
+            yield return null;
+            float animationTime = Mathf.Clamp01((Time.time - timeStart) / duration);
+            player.transform.parent.transform.rotation = Quaternion.Slerp(initialRotation, finalRotation, animationTime);
+        }
+        cubeTurning = true;
+    }
 }
