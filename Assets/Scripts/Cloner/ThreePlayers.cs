@@ -20,7 +20,7 @@ public class ThreePlayers : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerParent.transform.position.x + (i * 0.25f -0.05f) * 1.7f, playerParent.transform.position.y +0.1f, playerParent.transform.position.z + 0f), playerParent.transform.rotation, playerParent.transform);
+            GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerParent.transform.position.x + ((i+1) * 0.15f -0.25f) * 1.7f, playerParent.transform.position.y + -0.19f, playerParent.transform.position.z + 0f), playerParent.transform.rotation, playerParent.transform);
             
             PlayerClone.name = "PlayerClone" + (i + 1);
         }
