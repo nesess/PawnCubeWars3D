@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClonePlayer : MonoBehaviour
 {
+    public GameObject CloneText;
     public GameObject playerOriginal;
     public GameObject playerContainer;
     public int numOfPlayers = 3;
@@ -27,7 +28,7 @@ public class ClonePlayer : MonoBehaviour
         {
             if (i < 3)
             {
-                GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + ((i+1) * 0.09f + 1.25f) * 3f, playerOriginal.transform.position.y - 0.1f, playerOriginal.transform.position.z + 0.55f), playerOriginal.transform.rotation);
+                GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + ((i+1) * 0.09f + 1.85f) * 3f, playerOriginal.transform.position.y - 0.1f, playerOriginal.transform.position.z + 7.2f), playerOriginal.transform.rotation);
                 PlayerClone.transform.parent = playerContainer.transform;
                 PlayerClone.name = "PlayerClone" + (i + 1);
             }
@@ -46,6 +47,9 @@ public class ClonePlayer : MonoBehaviour
         }
 
         cloned = true;
+        Destroy(CloneText);
+        playerContainer.transform.Rotate(0,-90,0);
+
     }
 
     void Update()
