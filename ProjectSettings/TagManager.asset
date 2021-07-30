@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Object 1
   - Object 2
+  - Initial Spawner
   layers:
   - Default
   - TransparentFX
