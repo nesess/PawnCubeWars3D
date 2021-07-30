@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(textFadeRoutine(touchStartText));
+        gameSc.SetActive(false);
     }
 
     public void startGameButton()

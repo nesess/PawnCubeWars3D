@@ -58,9 +58,11 @@ public class GameManager : MonoBehaviour
             switch (moveLocation)
             {
                 case "right":
+                    
                     if (currentPos.GetComponent<MovePoint>().rightPos != null)
                     {
                         player.transform.parent = cubeRightSide.transform;
+                        player.transform.eulerAngles = new Vector3(0, -90, 0);
                         StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos));
                         
                     }
@@ -73,6 +75,7 @@ public class GameManager : MonoBehaviour
                     if (currentPos.GetComponent<MovePoint>().leftPos != null)
                     {
                         player.transform.parent = cubeLeftSide.transform;
+                        player.transform.eulerAngles = new Vector3(0, 90, 0);
                         StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos));
                     }
                     else
@@ -83,7 +86,8 @@ public class GameManager : MonoBehaviour
                 case "down":
                     if (currentPos.GetComponent<MovePoint>().downPos != null)
                     {
-                        if(currentPos.gameObject.name == "BotLeft" || currentPos.gameObject.name == "BotRight")
+                        
+                        if (currentPos.gameObject.name == "BotLeft" || currentPos.gameObject.name == "BotRight")
                         {
                            
                             StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().downPos, "up"));
@@ -93,7 +97,8 @@ public class GameManager : MonoBehaviour
                         {
                             StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().downPos));
                         }
-                        
+                        player.transform.eulerAngles = new Vector3(0, 0, 0);
+
                     }
                     else
                     {
@@ -103,6 +108,7 @@ public class GameManager : MonoBehaviour
                 case "up":
                     if (currentPos.GetComponent<MovePoint>().upPos != null)
                     {
+                       
                         if (currentPos.gameObject.name == "TopLeft" || currentPos.gameObject.name == "TopRight")
                         {
                                 StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().upPos, "down"));
@@ -111,6 +117,7 @@ public class GameManager : MonoBehaviour
                         {
                             StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().upPos));
                         }
+                        player.transform.eulerAngles = new Vector3(0, 180, 0);
                     }
                     else
                     {
@@ -161,7 +168,7 @@ public class GameManager : MonoBehaviour
         float currentMovementTime = 0f;
 
         cubeTurning = false;
-        StartCoroutine(LinearRotationRoutine(turnDegree, Vector3.right, 1));
+        StartCoroutine(LinearRotationRoutine(turnDegree, Vector3.right, 1,player.transform.parent.gameObject));
         while (!cubeTurning )
         {
 
@@ -196,9 +203,9 @@ public class GameManager : MonoBehaviour
 
 
 
-    IEnumerator LinearRotationRoutine(float degrees, Vector3 axis, float duration)
+    IEnumerator LinearRotationRoutine(float degrees, Vector3 axis, float duration,GameObject rotateObj)
     {
-        Quaternion initialRotation = player.transform.parent.transform.rotation;
+        Quaternion initialRotation = rotateObj.transform.rotation;
         Quaternion finalRotation = initialRotation * Quaternion.AngleAxis(degrees, axis);
 
         float timeStart = Time.time;
@@ -208,7 +215,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
             float animationTime = Mathf.Clamp01((Time.time - timeStart) / duration);
-            player.transform.parent.transform.rotation = Quaternion.Slerp(initialRotation, finalRotation, animationTime);
+            rotateObj.transform.rotation = Quaternion.Slerp(initialRotation, finalRotation, animationTime);
         }
         cubeTurning = true;
     }
