@@ -32,17 +32,23 @@ public class PlayerDestructor : MonoBehaviour
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
 
-        if (totalNumOfPlayers > totalNumOfEnemies)
-        {
-
-        
-            var PlayersToDestuct = new List<GameObject>();
+        var PlayersToDestuct = new List<GameObject>();
         foreach (Transform child in PlayerContainer.transform) PlayersToDestuct.Add(child.gameObject);
-        
-       if(!isDestroyed)
+        if(!isDestroyed)
+        {
+        if (totalNumOfPlayers > totalNumOfEnemies)
         {
             Destroy(PlayersToDestuct[0]);
             Destroy(PlayersToDestuct[3]);
+            isDestroyed = true;
+        }
+        
+        else 
+        {
+            for(int i=0;i< totalNumOfEnemies;i++)
+            {
+                Destroy(PlayersToDestuct[i]);
+            }
             isDestroyed = true;
         }
         }

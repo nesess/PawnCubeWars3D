@@ -29,12 +29,21 @@ public class EnemyDestructor : MonoBehaviour
     {
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
+        
+        var Enemies = new List<GameObject>();
+        foreach (Transform child in EnemyContainer.transform) Enemies.Add(child.gameObject);
 
         if (totalNumOfPlayers>totalNumOfEnemies)
-        {
-            var Enemies = new List<GameObject>();
-            foreach (Transform child in EnemyContainer.transform) Enemies.Add(child.gameObject);
+        {          
             Enemies.ForEach(child => Destroy(child));
+        }
+        else
+        {
+            for(int i=0;i<totalNumOfPlayers;i++)
+            {
+                Destroy(Enemies[i+1]);
+            }
+            
         }
     }
         

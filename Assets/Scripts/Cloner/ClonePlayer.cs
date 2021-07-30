@@ -15,7 +15,7 @@ public class ClonePlayer : MonoBehaviour
 
     void Start()
     {
-
+        totalNumOfPlayers = numOfPlayers;
     }
 
     void OnTriggerEnter()
