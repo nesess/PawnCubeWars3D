@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ClonePlayer : MonoBehaviour
 {
     public GameObject CloneText;
     public GameObject playerOriginal;
     public GameObject playerContainer;
-    public int numOfPlayers = 3;
+    public int numOfPlayers = 3;   //initial number of players
+    public int totalNumOfPlayers;  //number of players after clone
 
     bool cloned = false;
 
@@ -24,7 +26,8 @@ public class ClonePlayer : MonoBehaviour
 
     void CreatePlayers(int playerNumber)
     {
-        for (int i = 0; i < 2 * playerNumber - numOfPlayers; i++)
+        int i;
+        for (i = 0; i < 2 * playerNumber - numOfPlayers; i++)
         {
             if (i < 3)
             {
@@ -45,7 +48,7 @@ public class ClonePlayer : MonoBehaviour
                 PlayerClone.name = "PlayerClone" + (i + 1);
             }
         }
-
+        totalNumOfPlayers = numOfPlayers + i;
         cloned = true;
         Destroy(CloneText);
         playerContainer.transform.Rotate(0,-90,0);

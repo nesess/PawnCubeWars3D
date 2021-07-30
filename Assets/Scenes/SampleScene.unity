@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 206199501}
   m_Layer: 0
   m_Name: EnemyCreator
-  m_TagString: Untagged
+  m_TagString: Object 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -601,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyOriginal: {fileID: 2643013957064407263, guid: 8fae185e5370f7043875563fc22555f1, type: 3}
   enemyContainer: {fileID: 840247040}
+  totalNumOfEnemies: 0
 --- !u!1001 &214171457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1650,7 +1651,7 @@ GameObject:
   - component: {fileID: 761513257}
   m_Layer: 0
   m_Name: CloneTrigger
-  m_TagString: Untagged
+  m_TagString: Object 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1671,6 +1672,7 @@ MonoBehaviour:
   playerOriginal: {fileID: 6893817486391069524, guid: 2f78be63c94ad7740a52ec8af108c57c, type: 3}
   playerContainer: {fileID: 1138080929}
   numOfPlayers: 3
+  totalNumOfPlayers: 0
 --- !u!65 &761513258
 BoxCollider:
   m_ObjectHideFlags: 0
