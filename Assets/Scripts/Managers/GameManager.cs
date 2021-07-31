@@ -61,8 +61,9 @@ public class GameManager : MonoBehaviour
                     
                     if (currentPos.GetComponent<MovePoint>().rightPos != null)
                     {
+
+                        player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, -90, player.transform.eulerAngles.z);
                         player.transform.parent = cubeRightSide.transform;
-                        player.transform.eulerAngles = new Vector3(0, -90, 0);
                         StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos));
                         
                     }
@@ -74,8 +75,9 @@ public class GameManager : MonoBehaviour
                 case "left":
                     if (currentPos.GetComponent<MovePoint>().leftPos != null)
                     {
+                        
+                        player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90, player.transform.eulerAngles.z);
                         player.transform.parent = cubeLeftSide.transform;
-                        player.transform.eulerAngles = new Vector3(0, 90, 0);
                         StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos));
                     }
                     else
@@ -86,7 +88,8 @@ public class GameManager : MonoBehaviour
                 case "down":
                     if (currentPos.GetComponent<MovePoint>().downPos != null)
                     {
-                        
+
+                        player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 0, player.transform.eulerAngles.z);
                         if (currentPos.gameObject.name == "BotLeft" || currentPos.gameObject.name == "BotRight")
                         {
                            
@@ -95,9 +98,10 @@ public class GameManager : MonoBehaviour
                         } 
                         else
                         {
-                            StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().downPos));
+                            
+                            StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().downPos));    
                         }
-                        player.transform.eulerAngles = new Vector3(0, 0, 0);
+                        
 
                     }
                     else
@@ -108,16 +112,19 @@ public class GameManager : MonoBehaviour
                 case "up":
                     if (currentPos.GetComponent<MovePoint>().upPos != null)
                     {
-                       
+
+                        player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 180, player.transform.eulerAngles.z);
                         if (currentPos.gameObject.name == "TopLeft" || currentPos.gameObject.name == "TopRight")
                         {
-                                StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().upPos, "down"));
+                            
+                            StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().upPos, "down"));
                         }
                         else
                         {
+                            
                             StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().upPos));
                         }
-                        player.transform.eulerAngles = new Vector3(0, 180, 0);
+                       
                     }
                     else
                     {
@@ -132,12 +139,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     private void defaultState()
     {
         Debug.Log("cant go there");
         mooving = false;
     }
    
+    private void turnPlayer()
+    {
+        player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, 180, 0);
+    }
 
     IEnumerator moveCoroutine(GameObject target)
     {
@@ -174,25 +186,21 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
-        
-        
 
-        Quaternion endRotationPlayer = Quaternion.Euler(player.transform.eulerAngles.x - 90, 0, 0);
-        if (rotateDirection == "down")
-        {
-            endRotationPlayer = Quaternion.Euler(player.transform.eulerAngles.x + 90, 0, 0);
 
-        }
+        StartCoroutine(LinearRotationRoutine(90, Vector3.left, 0.5f, player));
+        
 
         currentMovementTime = 0;
         Vector3 startpos = player.transform.position;
+        
         while ( player.transform.position != target.transform.position)
         {
             currentMovementTime += Time.deltaTime;
 
             player.transform.position = Vector3.Lerp(startpos, target.transform.position, currentMovementTime / totalMovementTime);
 
-            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, endRotationPlayer, currentMovementTime / totalMovementTime);
+            //player.transform.localRotation = Quaternion.Lerp(player.transform.localRotation, endRotationPlayer, currentMovementTime / totalMovementTime);
             yield return new WaitForEndOfFrame();
         }
 
