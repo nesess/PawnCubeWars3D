@@ -11,6 +11,8 @@ public class EnemyDestructor : MonoBehaviour
 
     int totalNumOfPlayers;
     int totalNumOfEnemies;
+    public float destroyTime = 1f;
+    int i = 0;
 
     void Awake()
     {
@@ -23,31 +25,43 @@ public class EnemyDestructor : MonoBehaviour
     void Start()
     {
         
+        
+        
+
     }
-    
+
     void OnTriggerEnter()
     {
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
-        
-        var Enemies = new List<GameObject>();
-        foreach (Transform child in EnemyContainer.transform) Enemies.Add(child.gameObject);
+        StartCoroutine(DestroyEnemies());
+       
 
-        if (totalNumOfPlayers>totalNumOfEnemies)
-        {          
-            Enemies.ForEach(child => Destroy(child));
-        }
-        else
+
+
+        IEnumerator DestroyEnemies()
         {
-            for(int i=0;i<totalNumOfPlayers;i++)
+            var Enemies = new List<GameObject>();
+            foreach (Transform child in EnemyContainer.transform) Enemies.Add(child.gameObject);
+
+            if (totalNumOfPlayers > totalNumOfEnemies)
             {
-                Destroy(Enemies[i+1]);
+                for (int i = 0; i < totalNumOfEnemies; i++)
+                {
+                    yield return new WaitForSeconds(0.3f);
+                    Destroy(Enemies[i]);
+                }
             }
-            
+            else
+            {
+                for (int i = 0; i < totalNumOfPlayers; i++)
+                {
+                    yield return new WaitForSeconds(0.3f);
+                    Destroy(Enemies[i]);
+                }
+            }
         }
     }
-        
-    
         
         
     // Update is called once per frame

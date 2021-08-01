@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDestructor : MonoBehaviour
 {
     public GameObject PlayerContainer;
+    public GameObject Player;
     bool isDestroyed = false;
 
     GameObject a;
@@ -32,25 +33,40 @@ public class PlayerDestructor : MonoBehaviour
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
 
+
+        
+
+        StartCoroutine(DestructPlayers());
+
+        IEnumerator DestructPlayers()
+        {
         var PlayersToDestuct = new List<GameObject>();
+        foreach (Transform child in Player.transform) PlayersToDestuct.Add(child.gameObject);
         foreach (Transform child in PlayerContainer.transform) PlayersToDestuct.Add(child.gameObject);
-        if(!isDestroyed)
+        
+        if (!isDestroyed)
         {
         if (totalNumOfPlayers > totalNumOfEnemies)
         {
-            Destroy(PlayersToDestuct[0]);
-            Destroy(PlayersToDestuct[3]);
+            for (int i = 1; i <= totalNumOfEnemies; i++)
+            {
+                yield return new WaitForSeconds(0.3f);
+                Destroy(PlayersToDestuct[i]);
+            }
             isDestroyed = true;
         }
         
         else 
         {
-            for(int i=0;i< totalNumOfEnemies;i++)
+            for(int i=1;i<=totalNumOfPlayers;i++)
             {
+                yield return new WaitForSeconds(0.3f);
                 Destroy(PlayersToDestuct[i]);
             }
             isDestroyed = true;
         }
+        }
+        
         }
     }
 
