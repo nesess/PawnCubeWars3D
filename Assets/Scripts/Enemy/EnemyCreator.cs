@@ -14,7 +14,7 @@ public class EnemyCreator : MonoBehaviour
         int i;
         for (i = 0; i < 4; i++)
         {
-            GameObject PlayerClone = Instantiate(enemyOriginal, new Vector3(enemyOriginal.transform.position.x + (i * 0.15f +1.2f) * 1.7f, enemyOriginal.transform.position.y - 4f, enemyOriginal.transform.position.z + 0.3f), enemyOriginal.transform.rotation);
+            GameObject PlayerClone = Instantiate(enemyOriginal, new Vector3(enemyOriginal.transform.position.x + (i * 0.15f -0.5f) * 1.7f, enemyOriginal.transform.position.y - 4f, enemyOriginal.transform.position.z + -2.6f), enemyOriginal.transform.rotation);
             PlayerClone.transform.parent = enemyContainer.transform;
             PlayerClone.name = "EnemyClone" + (i + 1);
         }
