@@ -33,12 +33,13 @@ public class PlayerDestructor : MonoBehaviour
 
     void OnTriggerEnter()
     {
+        
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
 
 
         
-
+        
         StartCoroutine(DestructPlayers());
 
         IEnumerator DestructPlayers()
@@ -53,6 +54,8 @@ public class PlayerDestructor : MonoBehaviour
         {
             for (int i = 1; i <= totalNumOfEnemies; i++)
                     {
+                        SphereCollider sphereCollider = PlayersToDestuct[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
                         xdirection = Random.Range(-180, 360);
                         zdirection = Random.Range(-90, 270);
 
@@ -70,6 +73,8 @@ public class PlayerDestructor : MonoBehaviour
         {
             for(int i=1;i<=totalNumOfPlayers;i++)
             {
+                        SphereCollider sphereCollider = PlayersToDestuct[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
                         xdirection = Random.Range(-180, 360);
                         zdirection = Random.Range(-90, 270);
 

@@ -17,6 +17,8 @@ public class EnemyDestructor : MonoBehaviour
     float xdirection;
     float zdirection;
 
+    bool isDestroyed;
+
     void Awake()
     {
         a = GameObject.FindGameObjectWithTag("Object 1");
@@ -35,6 +37,10 @@ public class EnemyDestructor : MonoBehaviour
 
     void OnTriggerEnter()
     {
+        if(!isDestroyed)
+            {
+
+           
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
         StartCoroutine(DestroyEnemies());
@@ -51,6 +57,8 @@ public class EnemyDestructor : MonoBehaviour
             {
                 for (int i = 0; i < totalNumOfEnemies; i++)
                 {
+                        SphereCollider sphereCollider = Enemies[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
                     xdirection = Random.Range(-180, 180);
                     zdirection = Random.Range(-90, 270);
 
@@ -67,7 +75,9 @@ public class EnemyDestructor : MonoBehaviour
             {
                 for (int i = 0; i < totalNumOfPlayers; i++)
                 {
-                    xdirection = Random.Range(-180, 180);
+                        SphereCollider sphereCollider = Enemies[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
+                        xdirection = Random.Range(-180, 180);
                     zdirection = Random.Range(-90, 2700);
 
                     Enemies[i].transform.Rotate(90, 0, 0);
@@ -78,7 +88,11 @@ public class EnemyDestructor : MonoBehaviour
                     Destroy(Enemies[i]);
                 }
             }
+                isDestroyed = true;
         }
+
+        }
+
     }
         
         
