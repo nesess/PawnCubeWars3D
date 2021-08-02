@@ -568,7 +568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &46938452
 Transform:
   m_ObjectHideFlags: 0
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upPos: {fileID: 1367405554}
   downPos: {fileID: 472544523}
-  rightPos: {fileID: 0}
+  rightPos: {fileID: 251038260}
   leftPos: {fileID: 0}
 --- !u!4 &126776764 stripped
 Transform:
@@ -3781,7 +3781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &519307142
 Transform:
   m_ObjectHideFlags: 0
@@ -5374,7 +5374,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 1
@@ -10296,7 +10296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1228149747
 MonoBehaviour:
   m_ObjectHideFlags: 0
