@@ -11,8 +11,11 @@ public class EnemyDestructor : MonoBehaviour
 
     int totalNumOfPlayers;
     int totalNumOfEnemies;
-    public float destroyTime = 1f;
-    int i = 0;
+    //public float destroyTime = 1f;
+    //int i = 0;
+
+    float xdirection;
+    float zdirection;
 
     void Awake()
     {
@@ -48,15 +51,30 @@ public class EnemyDestructor : MonoBehaviour
             {
                 for (int i = 0; i < totalNumOfEnemies; i++)
                 {
+                    xdirection = Random.Range(-180, 180);
+                    zdirection = Random.Range(-90, 270);
+
+                    Enemies[i].transform.Rotate(90, 0, 0);
                     yield return new WaitForSeconds(0.3f);
+                    Rigidbody r = Enemies[i].GetComponent<Rigidbody>();
+                    r.AddForce(new Vector3(xdirection,90,zdirection));
+                    yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
+                  
                 }
             }
             else
             {
                 for (int i = 0; i < totalNumOfPlayers; i++)
                 {
+                    xdirection = Random.Range(-180, 180);
+                    zdirection = Random.Range(-90, 2700);
+
+                    Enemies[i].transform.Rotate(90, 0, 0);
                     yield return new WaitForSeconds(0.3f);
+                    Rigidbody r = Enemies[i].GetComponent<Rigidbody>();
+                    r.AddForce(new Vector3(xdirection, 90, zdirection));
+                    yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
                 }
             }

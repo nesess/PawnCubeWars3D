@@ -14,6 +14,9 @@ public class PlayerDestructor : MonoBehaviour
     int totalNumOfPlayers;
     int totalNumOfEnemies;
 
+    float xdirection;
+    float zdirection;
+
     void Awake()
     {
         a = GameObject.FindGameObjectWithTag("Object 1");
@@ -49,10 +52,17 @@ public class PlayerDestructor : MonoBehaviour
         if (totalNumOfPlayers > totalNumOfEnemies)
         {
             for (int i = 1; i <= totalNumOfEnemies; i++)
-            {
-                yield return new WaitForSeconds(0.3f);
-                Destroy(PlayersToDestuct[i]);
-            }
+                    {
+                        xdirection = Random.Range(-180, 360);
+                        zdirection = Random.Range(-90, 270);
+
+                        PlayersToDestuct[i].transform.Rotate(90, 0, 0);
+                        yield return new WaitForSeconds(0.3f);
+                        Rigidbody r = PlayersToDestuct[i].GetComponent<Rigidbody>();
+                        r.AddForce(new Vector3(xdirection, 90, zdirection));
+                        yield return new WaitForSeconds(0.7f);
+                        Destroy(PlayersToDestuct[i]);
+                    }
             isDestroyed = true;
         }
         
@@ -60,9 +70,16 @@ public class PlayerDestructor : MonoBehaviour
         {
             for(int i=1;i<=totalNumOfPlayers;i++)
             {
-                yield return new WaitForSeconds(0.3f);
-                Destroy(PlayersToDestuct[i]);
-            }
+                        xdirection = Random.Range(-180, 360);
+                        zdirection = Random.Range(-90, 270);
+
+                        PlayersToDestuct[i].transform.Rotate(90, 0, 0);
+                        yield return new WaitForSeconds(0.3f);
+                        Rigidbody r = PlayersToDestuct[i].GetComponent<Rigidbody>();
+                        r.AddForce(new Vector3(xdirection, 90, zdirection));
+                        yield return new WaitForSeconds(0.7f);
+                        Destroy(PlayersToDestuct[i]);
+                    }
             isDestroyed = true;
         }
         }
