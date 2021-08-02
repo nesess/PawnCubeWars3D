@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class MovePoint : MonoBehaviour
 {
-    public GameObject upPos;
-    public GameObject downPos;
-    public GameObject rightPos;
-    public GameObject leftPos;
+    public posClass upPos;
+    public posClass downPos;
+    public posClass[] rightPos;
+    public posClass[] leftPos;
+
+    [System.Serializable]
+    public class posClass
+    {
+        public GameObject pos;
+        public bool switchOtherCube;
+    }
 
 }
