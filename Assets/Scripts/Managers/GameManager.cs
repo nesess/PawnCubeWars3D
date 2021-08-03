@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int rightSide = 1;
 
+    [SerializeField]
+    private int currentSide;
+
     public static GameManager instance;
 
 
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //player.transform.parent.transform.rotation = Quaternion.Euler(270,0,0);
-       
+        currentSide = leftSide;
         
     }
 
@@ -65,18 +68,19 @@ public class GameManager : MonoBehaviour
                     
                     if (currentPos.GetComponent<MovePoint>().rightPos != null && currentPos.GetComponent<MovePoint>().rightPos.Length == 4)
                     {
-                        if(currentPos.GetComponent<MovePoint>().rightPos[leftSide-1] != null)
+                        if(currentPos.GetComponent<MovePoint>().rightPos[currentSide-1] != null)
                         {
                             player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, -90, player.transform.eulerAngles.z);
-                            if (currentPos.GetComponent<MovePoint>().rightPos[leftSide-1].switchOtherCube)
+                            if (currentPos.GetComponent<MovePoint>().rightPos[currentSide-1].switchOtherCube)
                             {
                                 
                                 player.transform.parent = cubeRightSide.transform;
-                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos[leftSide-1].pos));
+                                currentSide = rightSide;
+                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos[currentSide -1].pos));
                             }
                             else
                             {
-                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos[leftSide-1].pos));
+                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos[currentSide -1].pos));
                             }
                         }
                         else
@@ -93,18 +97,19 @@ public class GameManager : MonoBehaviour
                 case "left":
                     if (currentPos.GetComponent<MovePoint>().leftPos != null && currentPos.GetComponent<MovePoint>().leftPos.Length == 4)
                     {
-                        if (currentPos.GetComponent<MovePoint>().leftPos[rightSide] != null)
+                        if (currentPos.GetComponent<MovePoint>().leftPos[currentSide-1] != null)
                         {
                             player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90, player.transform.eulerAngles.z);
-                            if (currentPos.GetComponent<MovePoint>().leftPos[rightSide - 1].switchOtherCube)
+                            if (currentPos.GetComponent<MovePoint>().leftPos[currentSide - 1].switchOtherCube)
                             {
 
                                 player.transform.parent = cubeLeftSide.transform;
-                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[rightSide - 1].pos));
+                                currentSide = leftSide;
+                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[currentSide - 1].pos));
                             }
                             else
                             {
-                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[rightSide - 1].pos));
+                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[currentSide - 1].pos));
                             }
                         }
                         else
@@ -127,10 +132,10 @@ public class GameManager : MonoBehaviour
                         {
                            
                             StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().downPos.pos, "up"));
-                            Debug.Log("saaa");
+                            
                             if (player.transform.parent.gameObject.Equals(cubeLeftSide))
                             {
-                                Debug.Log("as");
+                                
                                 if (leftSide == 4)
                                 {
                                     leftSide = 1;
@@ -138,8 +143,9 @@ public class GameManager : MonoBehaviour
                                 else
                                 {
                                     leftSide++;
-                                    Debug.Log("sa");
+                                   
                                 }
+                                currentSide = leftSide;
                             }
                             else if(player.transform.parent.gameObject.Equals(cubeRightSide))
                             {
@@ -151,6 +157,7 @@ public class GameManager : MonoBehaviour
                                 {
                                     rightSide++;
                                 }
+                                currentSide = rightSide;
                             }
                            
                         } 
