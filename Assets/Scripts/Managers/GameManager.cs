@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
                             }
                             else
                             {
-                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[leftSide - 1].pos));
+                                StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[rightSide - 1].pos));
                             }
                         }
                         else
