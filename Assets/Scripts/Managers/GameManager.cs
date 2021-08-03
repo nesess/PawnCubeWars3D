@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 case "down":
-                    if (currentPos.GetComponent<MovePoint>().downPos != null)
+                    if (currentPos.GetComponent<MovePoint>().downPos.pos != null)
                     {
 
                         player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 0, player.transform.eulerAngles.z);
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 case "up":
-                    if (currentPos.GetComponent<MovePoint>().upPos != null)
+                    if (currentPos.GetComponent<MovePoint>().upPos.pos != null)
                     {
 
                         player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 180, player.transform.eulerAngles.z);
@@ -265,7 +265,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        StartCoroutine(LinearRotationRoutine(90, Vector3.left, 0.5f, player));
+        StartCoroutine(LinearRotationRoutine(90, Vector3.left, 0.3f, player));
         
 
         
