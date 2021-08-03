@@ -3866,9 +3866,9 @@ MonoBehaviour:
     switchOtherCube: 0
   rightPos: []
   leftPos:
-  - pos: {fileID: 1979864960}
-    switchOtherCube: 0
   - pos: {fileID: 0}
+    switchOtherCube: 0
+  - pos: {fileID: 1979864960}
     switchOtherCube: 0
   - pos: {fileID: 0}
     switchOtherCube: 0
@@ -3979,6 +3979,7 @@ Transform:
   - {fileID: 251038261}
   - {fileID: 1169327779}
   - {fileID: 873920772}
+  - {fileID: 1348464806}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7788,8 +7789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upPos:
-    pos: {fileID: 0}
-    switchOtherCube: 0
+    pos: {fileID: 251038260}
+    switchOtherCube: 1
   downPos:
     pos: {fileID: 500916563}
     switchOtherCube: 0
@@ -11295,6 +11296,65 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf04e7679cbfd44d823db806b249517, type: 3}
+--- !u!1 &1348464804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1348464806}
+  - component: {fileID: 1348464805}
+  m_Layer: 0
+  m_Name: T_MidLeft 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1348464805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348464804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6ed9414d5273b4a8edcb747ffded6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upPos:
+    pos: {fileID: 0}
+    switchOtherCube: 0
+  downPos:
+    pos: {fileID: 0}
+    switchOtherCube: 0
+  rightPos:
+  - pos: {fileID: 0}
+    switchOtherCube: 0
+  - pos: {fileID: 2118663919}
+    switchOtherCube: 1
+  - pos: {fileID: 0}
+    switchOtherCube: 0
+  - pos: {fileID: 0}
+    switchOtherCube: 0
+  leftPos: []
+--- !u!4 &1348464806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348464804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.09, y: 3.8318167, z: -1.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519307142}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1351330917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16451,10 +16511,10 @@ MonoBehaviour:
     pos: {fileID: 0}
     switchOtherCube: 0
   rightPos:
-  - pos: {fileID: 0}
-    switchOtherCube: 0
   - pos: {fileID: 873920771}
     switchOtherCube: 1
+  - pos: {fileID: 0}
+    switchOtherCube: 0
   - pos: {fileID: 0}
     switchOtherCube: 0
   - pos: {fileID: 0}
@@ -17436,6 +17496,7 @@ MonoBehaviour:
   currentPos: {fileID: 1811065187}
   leftSide: 1
   rightSide: 1
+  currentSide: 0
 --- !u!1001 &1976221943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17552,9 +17613,9 @@ MonoBehaviour:
     pos: {fileID: 0}
     switchOtherCube: 0
   rightPos:
-  - pos: {fileID: 500916563}
-    switchOtherCube: 0
   - pos: {fileID: 0}
+    switchOtherCube: 0
+  - pos: {fileID: 500916563}
     switchOtherCube: 0
   - pos: {fileID: 0}
     switchOtherCube: 0
@@ -19036,8 +19097,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118663919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1010921, y: 3.8318167, z: -1.8626248}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.10109213, y: 3.8318167, z: -1.8626248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 46938452}
@@ -19071,10 +19132,10 @@ MonoBehaviour:
   - pos: {fileID: 0}
     switchOtherCube: 0
   leftPos:
+  - pos: {fileID: 1348464804}
+    switchOtherCube: 1
   - pos: {fileID: 0}
     switchOtherCube: 0
-  - pos: {fileID: 1169327778}
-    switchOtherCube: 1
   - pos: {fileID: 0}
     switchOtherCube: 0
   - pos: {fileID: 0}
