@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lv3PlayerDestructor : MonoBehaviour
+public class PlayerDestructor : MonoBehaviour
 {
     public GameObject PlayerContainer;
     public GameObject Player;
@@ -35,7 +35,7 @@ public class Lv3PlayerDestructor : MonoBehaviour
     {
         
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
-        totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
+        totalNumOfEnemies = b.GetComponent<Lv1EnemyCreator>().totalNumOfEnemies;
 
 
         

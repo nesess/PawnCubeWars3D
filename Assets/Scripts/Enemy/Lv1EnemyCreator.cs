@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCreator : MonoBehaviour
+public class Lv1EnemyCreator : MonoBehaviour
 {
     public GameObject enemyOriginal;
     public GameObject enemyContainer;
@@ -12,7 +12,7 @@ public class EnemyCreator : MonoBehaviour
     void Start()
     {
         int i;
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < 4; i++)
         {
             GameObject PlayerClone = Instantiate(enemyOriginal, new Vector3(enemyOriginal.transform.position.x + (i * 0.15f +0f) * 1.7f, enemyOriginal.transform.position.y +0f, enemyOriginal.transform.position.z + -0f), enemyOriginal.transform.rotation);
             PlayerClone.transform.parent = enemyContainer.transform;

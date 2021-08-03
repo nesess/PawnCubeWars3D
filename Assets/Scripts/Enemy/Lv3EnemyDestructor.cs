@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDestructor : MonoBehaviour
+public class Lv3EnemyDestructor : MonoBehaviour
 {
     public GameObject EnemyContainer;
 
@@ -37,7 +37,7 @@ public class EnemyDestructor : MonoBehaviour
         if(!isDestroyed)
         {          
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
-        totalNumOfEnemies = b.GetComponent<Lv1EnemyCreator>().totalNumOfEnemies;
+        totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
 
 
         StartCoroutine(DestroyEnemies());
