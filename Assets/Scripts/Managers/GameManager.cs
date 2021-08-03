@@ -75,8 +75,9 @@ public class GameManager : MonoBehaviour
                             {
                                 
                                 player.transform.parent = cubeRightSide.transform;
-                                currentSide = rightSide;
+                                
                                 StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().rightPos[currentSide -1].pos));
+                                currentSide = rightSide;
                             }
                             else
                             {
@@ -104,8 +105,9 @@ public class GameManager : MonoBehaviour
                             {
 
                                 player.transform.parent = cubeLeftSide.transform;
-                                currentSide = leftSide;
+                                
                                 StartCoroutine(moveCoroutine(currentPos.GetComponent<MovePoint>().leftPos[currentSide - 1].pos));
+                                currentSide = leftSide;
                             }
                             else
                             {
