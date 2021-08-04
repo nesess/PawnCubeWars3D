@@ -8,6 +8,9 @@ TagManager:
   - Object 2
   - Initial Spawner
   - EnemyDestructor
+  - Object 3
+  - Enemy Destructor 4 2
+  - White
   layers:
   - Default
   - TransparentFX
