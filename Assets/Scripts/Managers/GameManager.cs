@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
                     
                     if (currentPos.GetComponent<MovePoint>().rightPos != null && currentPos.GetComponent<MovePoint>().rightPos.Length == 4)
                     {
-                        if(currentPos.GetComponent<MovePoint>().rightPos[rightSide-1] != null)
+                        if(currentPos.GetComponent<MovePoint>().rightPos[rightSide-1].pos != null)
                         {
                             player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, -90, player.transform.eulerAngles.z);
                             if (currentPos.GetComponent<MovePoint>().rightPos[rightSide - 1].switchOtherCube)
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
                     }
                     else if(currentPos.GetComponent<MovePoint>().rightPos != null && currentPos.GetComponent<MovePoint>().rightPos.Length == 1)
                     {
-                        if (currentPos.GetComponent<MovePoint>().rightPos[0] != null)
+                        if (currentPos.GetComponent<MovePoint>().rightPos[0].pos != null)
                         {
                             player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, -90, player.transform.eulerAngles.z);
                             if (currentPos.GetComponent<MovePoint>().rightPos[0].switchOtherCube)
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
                 case "left":
                     if (currentPos.GetComponent<MovePoint>().leftPos != null && currentPos.GetComponent<MovePoint>().leftPos.Length == 4)
                     {
-                        if (currentPos.GetComponent<MovePoint>().leftPos[leftSide - 1] != null)
+                        if (currentPos.GetComponent<MovePoint>().leftPos[leftSide - 1].pos != null)
                         {
                             player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90, player.transform.eulerAngles.z);
                             if (currentPos.GetComponent<MovePoint>().leftPos[leftSide - 1].switchOtherCube)
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
                     }
                     else if (currentPos.GetComponent<MovePoint>().leftPos != null && currentPos.GetComponent<MovePoint>().leftPos.Length == 1)
                     {
-                        if (currentPos.GetComponent<MovePoint>().leftPos[0] != null)
+                        if (currentPos.GetComponent<MovePoint>().leftPos[0].pos != null)
                         {
                             player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90, player.transform.eulerAngles.z);
                             if (currentPos.GetComponent<MovePoint>().leftPos[0].switchOtherCube)
