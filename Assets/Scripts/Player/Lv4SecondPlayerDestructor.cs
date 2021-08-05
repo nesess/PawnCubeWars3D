@@ -52,7 +52,7 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
             {
                 if(numberFromCloner == 4)
                 {
-                for (int i = 1; i < 3; i++)
+                for (int i = 1; i < 4; i++)
                 {
                     SphereCollider sphereCollider = PlayersToDestuct[i].GetComponent<SphereCollider>();
                     Destroy(sphereCollider);
@@ -68,9 +68,26 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
                 }
                 isDestroyed = true;
                 }
-                else if(numberFromCloner == 2)
+                else if (numberFromCloner == 2 && whiteTaken)
                 {
-                    for (int i = 1; i < 5; i++)
+                    for (int i = 1; i < 4; i++)
+                    {
+                        SphereCollider sphereCollider = PlayersToDestuct[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
+                        xdirection = Random.Range(-180, 360);
+                        zdirection = Random.Range(-90, 270);
+
+                        PlayersToDestuct[i].transform.Rotate(90, 0, 0);
+                        yield return new WaitForSeconds(0.3f);
+                        Rigidbody r = PlayersToDestuct[i].GetComponent<Rigidbody>();
+                        r.AddForce(new Vector3(xdirection, 90, zdirection));
+                        yield return new WaitForSeconds(0.7f);
+                        Destroy(PlayersToDestuct[i]);
+                    }
+                }
+                else if(numberFromCloner == 2 && !whiteTaken)
+                {
+                    for (int i = 1; i < 3; i++)
                     {
                         SphereCollider sphereCollider = PlayersToDestuct[i].GetComponent<SphereCollider>();
                         Destroy(sphereCollider);
@@ -86,6 +103,26 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
                     }
                     isDestroyed = true;
                 }
+                else if (numberFromCloner == 0 && !whiteTaken)
+                {
+                            for (int i = 1; i < 4; i++)
+                            {
+                                SphereCollider sphereCollider = PlayersToDestuct[i].GetComponent<SphereCollider>();
+                                Destroy(sphereCollider);
+                                xdirection = Random.Range(-180, 360);
+                                zdirection = Random.Range(-90, 270);
+
+                                PlayersToDestuct[i].transform.Rotate(90, 0, 0);
+                                yield return new WaitForSeconds(0.3f);
+                                Rigidbody r = PlayersToDestuct[i].GetComponent<Rigidbody>();
+                                r.AddForce(new Vector3(xdirection, 90, zdirection));
+                                yield return new WaitForSeconds(0.7f);
+                                Destroy(PlayersToDestuct[i]);
+                            }
+                            isDestroyed = true;
+                        }
+
+
             }
 
                 

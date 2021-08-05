@@ -7,7 +7,11 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
     public GameObject EnemyContainer;
 
     GameObject cloner;
+    GameObject white;
     int numberFromCloner;
+    bool whiteTaken;
+
+    public bool win = false;
 
     GameObject a;
     GameObject b;
@@ -24,6 +28,7 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
 
     void Awake()
     {
+        white = GameObject.FindGameObjectWithTag("White");
         cloner = GameObject.FindGameObjectWithTag("Object 1");
 
     }
@@ -37,7 +42,8 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
     void OnTriggerEnter()
     {
         numberFromCloner = cloner.GetComponent<Lv4ClonePlayer>().numberToDestructor;
-        
+        whiteTaken = white.GetComponent<WhiteCharacter>().turned;
+
         if (!isDestroyed)
         {          
         
@@ -67,9 +73,28 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
                     yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
                     isDestroyed = true;
+                    win = true;
                 }
             }
-            else if(numberFromCloner==2)
+            else if (numberFromCloner==2 && whiteTaken)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        SphereCollider sphereCollider = Enemies[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
+                        xdirection = Random.Range(-180, 180);
+                        zdirection = Random.Range(-90, 270);
+
+                        Enemies[i].transform.Rotate(90, 0, 0);
+                        yield return new WaitForSeconds(0.3f);
+                        Rigidbody r = Enemies[i].GetComponent<Rigidbody>();
+                        r.AddForce(new Vector3(xdirection, 90, zdirection));
+                        yield return new WaitForSeconds(0.7f);
+                        Destroy(Enemies[i]);
+                        isDestroyed = true;
+                    }
+                }
+            else if(numberFromCloner==2 && !whiteTaken)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -87,6 +112,24 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
                     isDestroyed = true;
                 }
             }
+            else if(numberFromCloner==0 && !whiteTaken)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        SphereCollider sphereCollider = Enemies[i].GetComponent<SphereCollider>();
+                        Destroy(sphereCollider);
+                        xdirection = Random.Range(-180, 180);
+                        zdirection = Random.Range(-90, 270);
+
+                        Enemies[i].transform.Rotate(90, 0, 0);
+                        yield return new WaitForSeconds(0.3f);
+                        Rigidbody r = Enemies[i].GetComponent<Rigidbody>();
+                        r.AddForce(new Vector3(xdirection, 90, zdirection));
+                        yield return new WaitForSeconds(0.7f);
+                        Destroy(Enemies[i]);
+                        isDestroyed = true;
+                    }
+                }
 
             if (isDestroyed)
             {

@@ -18,6 +18,7 @@ public class Lv4EndScreen : MonoBehaviour
     public GameObject EndScreen4;
 
     bool isGameOver;
+    bool win;
     GameObject a;
 
     // Start is called before the first frame update
@@ -30,19 +31,20 @@ public class Lv4EndScreen : MonoBehaviour
     void Update()
     {
         isGameOver = a.GetComponent<Lv4SecondEnemyDestructor>().GameOver;
-        if(isGameOver)
+        win = a.GetComponent<Lv4SecondEnemyDestructor>().win;
+        if (isGameOver)
         {
             Time.timeScale = 0;
-            int blueNumber = 2;
-            //int blueNumber = a.GetComponent<Lv4SecondEnemyDestructor>().numberFromCloner;
             
-            if(blueNumber==2)
+            
+            
+            if(!win)
             {
                 EndScreen4.SetActive(true);
             }
             else
             {
-                if (blueNumber== 4)
+                if (win)
                 {
                     EndScreen1.SetActive(true);
                 }
