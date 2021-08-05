@@ -89,15 +89,16 @@ public class UIManager : MonoBehaviour
             {
                 case 0:
                     levelButtons[i].GetComponent<Button>().interactable = false;
-                    break;
-                case 1:
                     levelButtons[i].transform.GetChild(0).gameObject.SetActive(true);
                     break;
-                case 2:
+                case 1:
                     levelButtons[i].transform.GetChild(1).gameObject.SetActive(true);
                     break;
-                case 3:
+                case 2:
                     levelButtons[i].transform.GetChild(2).gameObject.SetActive(true);
+                    break;
+                case 3:
+                    levelButtons[i].transform.GetChild(3).gameObject.SetActive(true);
                     break;
                 default:
                     Debug.Log("something went wrong");
@@ -110,6 +111,11 @@ public class UIManager : MonoBehaviour
     {
         startSc.SetActive(true);
         levelSc.SetActive(false);
+    }
+
+    public void selectLevelButton(int level)
+    {
+        SceneManager.LoadScene("Level " + level.ToString());
     }
 
 }
