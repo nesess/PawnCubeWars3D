@@ -6,6 +6,7 @@ public class Lv4PlayerDestructor : MonoBehaviour
 {
     public GameObject PlayerContainer;
     public GameObject Player;
+    public Transform door;
     bool isDestroyed = false;
 
     GameObject white;
@@ -69,8 +70,9 @@ public class Lv4PlayerDestructor : MonoBehaviour
                     yield return new WaitForSeconds(0.7f);
                     Destroy(PlayersToDestuct[i]);
                 }
-                    isDestroyed = true;
-                }
+                    isDestroyed = true;                  
+                    door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(4,-6.5f,0), Time.deltaTime * 2.0f);
+            }
                 
             }
 
