@@ -71,7 +71,7 @@ public class Lv4PlayerDestructor : MonoBehaviour
                     Destroy(PlayersToDestuct[i]);
                 }
                     isDestroyed = true;                  
-                    door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(4,-6.5f,0), Time.deltaTime * 2.0f);
+                    door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(4,-11f,0), Time.deltaTime * 2.0f);
             }
                 
             }

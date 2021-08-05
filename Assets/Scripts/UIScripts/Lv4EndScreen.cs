@@ -35,7 +35,7 @@ public class Lv4EndScreen : MonoBehaviour
         if (isGameOver)
         {
             Time.timeScale = 0;
-            int blueNumber = 2;
+            
             
             
             if(!win)
