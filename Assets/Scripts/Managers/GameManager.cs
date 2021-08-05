@@ -234,15 +234,15 @@ public class GameManager : MonoBehaviour
                             StartCoroutine(rotateMoveCoroutine(currentPos.GetComponent<MovePoint>().upPos.pos, "down"));
                             if (player.transform.parent.gameObject.Equals(cubeLeftSide))
                             {
-                                Debug.Log("sa");
+                               
                                 if (leftSide == 1)
                                 {
-                                    Debug.Log("saa");
+                                    
                                     leftSide = 4;
                                 }
                                 else
                                 {
-                                    Debug.Log("saaa");
+                                   
                                     leftSide--;
                                 }
                             }

@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     private GameObject levelSc;
 
     [SerializeField]
-    private GameObject levelText;
+    private TextMeshProUGUI levelText;
     [SerializeField]
     private GameObject touchStartText;
 
@@ -24,17 +24,24 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject[] levelButtons;
+    private GameObject shopButton;
 
     [SerializeField]
-    private Scene sa;
+    private GameObject[] levelButtons;
+
+    
 
     private void Start()
     {
+        shopButton.GetComponent<Button>().interactable = false;
         StartCoroutine(textFadeRoutine(touchStartText));
         gameSc.SetActive(false);
         checkLevels();
+        levelText.text = "Level 1-" + PlayerPrefs.GetInt("currentLevel", 1);
         PlayerPrefs.SetInt("level1", 3);
+       // PlayerPrefs.SetInt("level2", 2);
+        //PlayerPrefs.SetInt("level3", 1);
+       // PlayerPrefs.SetInt("level4", 3);
     }
 
     public void startGameButton()
@@ -110,11 +117,13 @@ public class UIManager : MonoBehaviour
     public void closeLevelScreen()
     {
         startSc.SetActive(true);
+        StartCoroutine(textFadeRoutine(touchStartText));
         levelSc.SetActive(false);
     }
 
     public void selectLevelButton(int level)
     {
+        PlayerPrefs.SetInt("currentLevel", level);
         SceneManager.LoadScene("Level " + level.ToString());
     }
 
