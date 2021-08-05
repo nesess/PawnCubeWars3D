@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ClonePlayer : MonoBehaviour
+public class Lv2ClonePlayer : MonoBehaviour
 {
     public GameObject Player;
     public GameObject CloneText;
@@ -36,7 +36,7 @@ public class ClonePlayer : MonoBehaviour
     void CreatePlayers(int playerNumber)
     {
         int i;
-        for (i = 0; i < 2 * playerNumber - numOfPlayers; i++)
+        for (i = 0; i < 3; i++)
         {
             if (i < playerNumber)
             {
@@ -44,12 +44,18 @@ public class ClonePlayer : MonoBehaviour
                 {
                     GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + ((i+1) * 0.1f + 2.5f) * 3f, playerOriginal.transform.position.y -5f, playerOriginal.transform.position.z + 1.4f), Player.transform.rotation);
                     PlayerClone.transform.parent = playerContainer.transform;
-                    playerContainer.transform.Translate(new Vector3(0,-100,0));
+                    
                     PlayerClone.name = "PlayerClone" + (i + 1);
                 }
                 else if (Player.transform.rotation == Quaternion.Euler(0f, -90, 0))
                 {
                     GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + ( 6.5f) * 1f, playerOriginal.transform.position.y + 3f, playerOriginal.transform.position.z + (i + 1) * 0.2f  + 0.7f), Player.transform.rotation);
+                    PlayerClone.transform.parent = playerContainer.transform;
+                    PlayerClone.name = "PlayerClone" + (i + 1);
+                }
+                else if (Player.transform.rotation == Quaternion.Euler(0f, 90, 0))
+                {
+                    GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + (6.5f) * 1f, playerOriginal.transform.position.y + 3f, playerOriginal.transform.position.z + (i + 1) * 0.2f + 0.7f), Player.transform.rotation);
                     PlayerClone.transform.parent = playerContainer.transform;
                     PlayerClone.name = "PlayerClone" + (i + 1);
                 }

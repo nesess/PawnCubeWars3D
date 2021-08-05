@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDestructor : MonoBehaviour
+public class Lv3PlayerDestructor : MonoBehaviour
 {
     public GameObject PlayerContainer;
     public GameObject Player;

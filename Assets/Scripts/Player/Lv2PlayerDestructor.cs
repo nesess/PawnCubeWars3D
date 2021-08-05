@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDestructor : MonoBehaviour
+public class Lv2PlayerDestructor : MonoBehaviour
 {
     public GameObject PlayerContainer;
     public GameObject Player;
     bool isDestroyed = false;
+    bool isCloned;
 
     GameObject a;
     GameObject b;
@@ -20,7 +21,7 @@ public class PlayerDestructor : MonoBehaviour
     void Awake()
     {
         a = GameObject.FindGameObjectWithTag("Object 1");
-        b = GameObject.FindGameObjectWithTag("Object 2");
+        //b = GameObject.FindGameObjectWithTag("Object 2");
 
     }
 
@@ -33,9 +34,18 @@ public class PlayerDestructor : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        
-        totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
-        totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
+        isCloned = a.GetComponent<Lv2ClonePlayer>().cloned;
+        if (isCloned)
+        {
+            totalNumOfPlayers = 6;
+        }
+        else
+        {
+            totalNumOfPlayers = 3;
+        }
+
+        totalNumOfEnemies = 3;
+       
 
 
         
