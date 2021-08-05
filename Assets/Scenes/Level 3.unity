@@ -6016,7 +6016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2095784773}
   CloneText: {fileID: 185903082}
-  playerOriginal: {fileID: 6013103390256135558, guid: 97010a62cc5c4f748a73c29f4a6dcbfa, type: 3}
+  playerOriginal: {fileID: 6013103390256135558, guid: a7e88e377f5934c43b6638e632ddd1fe, type: 3}
   playerContainer: {fileID: 1138080929}
   numOfPlayers: 3
   totalNumOfPlayers: 0
