@@ -35,7 +35,7 @@ public class PlayerDestructor : MonoBehaviour
     {
         
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
-        totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
+        totalNumOfEnemies = b.GetComponent<Lv1EnemyCreator>().totalNumOfEnemies;
 
 
         

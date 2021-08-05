@@ -40,11 +40,10 @@ public class ClonePlayer : MonoBehaviour
         {
             if (i < playerNumber)
             {
-                if(Player.transform.rotation == Quaternion.Euler(0f,0,0))
+                if(Player.transform.rotation == Quaternion.Euler(0,0,0))
                 {
-                    GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + ((i+1) * 0.1f + 2.5f) * 3f, playerOriginal.transform.position.y -5f, playerOriginal.transform.position.z + 1.4f), Player.transform.rotation);
+                    GameObject PlayerClone = Instantiate(playerOriginal, new Vector3(playerOriginal.transform.position.x + ((i+1) * 0.1f + 2.5f) * 3f, playerOriginal.transform.position.y +3f, playerOriginal.transform.position.z + 1.4f), Player.transform.rotation);
                     PlayerClone.transform.parent = playerContainer.transform;
-                    playerContainer.transform.Translate(new Vector3(0,-100,0));
                     PlayerClone.name = "PlayerClone" + (i + 1);
                 }
                 else if (Player.transform.rotation == Quaternion.Euler(0f, -90, 0))
