@@ -15,14 +15,14 @@ public class Lv3EnemyDestructor : MonoBehaviour
 
     float xdirection;
     float zdirection;
-
+    bool isCloned;
     bool isDestroyed;
     public bool GameOver;
 
     void Awake()
     {
         a = GameObject.FindGameObjectWithTag("Object 1");
-        b = GameObject.FindGameObjectWithTag("Object 2");
+        //b = GameObject.FindGameObjectWithTag("Object 2");
 
     }
 
@@ -35,12 +35,21 @@ public class Lv3EnemyDestructor : MonoBehaviour
     void OnTriggerEnter()
     {
         if(!isDestroyed)
-        {          
-        totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
-        totalNumOfEnemies = b.GetComponent<EnemyCreator>().totalNumOfEnemies;
+        {
+            isCloned = a.GetComponent<ClonePlayer>().cloned;
+            if (isCloned)
+            {
+                totalNumOfPlayers = 4;
+            }
+            else
+            {
+                totalNumOfPlayers = 2;
+            }
+
+            totalNumOfEnemies = 3;
 
 
-        StartCoroutine(DestroyEnemies());
+            StartCoroutine(DestroyEnemies());
        
         IEnumerator DestroyEnemies()
         {

@@ -7,6 +7,7 @@ public class Lv3PlayerDestructor : MonoBehaviour
     public GameObject PlayerContainer;
     public GameObject Player;
     bool isDestroyed = false;
+    bool isCloned;
 
     GameObject a;
     GameObject b;
@@ -20,8 +21,6 @@ public class Lv3PlayerDestructor : MonoBehaviour
     void Awake()
     {
         a = GameObject.FindGameObjectWithTag("Object 1");
-        b = GameObject.FindGameObjectWithTag("Object 2");
-
     }
 
     // Start is called before the first frame update
@@ -33,9 +32,18 @@ public class Lv3PlayerDestructor : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        
-        totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
-        totalNumOfEnemies = b.GetComponent<Lv1EnemyCreator>().totalNumOfEnemies;
+        isCloned = a.GetComponent<ClonePlayer>().cloned;
+        if (isCloned)
+        {
+            totalNumOfPlayers = 4;
+        }
+        else
+        {
+            totalNumOfPlayers = 2;
+        }
+
+        totalNumOfEnemies = 3;
+
 
 
         

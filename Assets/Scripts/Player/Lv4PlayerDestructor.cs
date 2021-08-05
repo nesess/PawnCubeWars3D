@@ -51,7 +51,7 @@ public class Lv4PlayerDestructor : MonoBehaviour
         {
             var PlayersToDestuct = new List<GameObject>();
             foreach (Transform child in Player.transform) PlayersToDestuct.Add(child.gameObject);
-            foreach (Transform child in PlayerContainer.transform) PlayersToDestuct.Add(child.gameObject);
+            //foreach (Transform child in PlayerContainer.transform) PlayersToDestuct.Add(child.gameObject);
 
             if (!isDestroyed)
             {
