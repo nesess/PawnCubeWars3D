@@ -10633,7 +10633,7 @@ MonoBehaviour:
     switchOtherCube: 0
   rightPos:
   - pos: {fileID: 929508043}
-    switchOtherCube: 1
+    switchOtherCube: 0
   leftPos: []
 --- !u!1 &1376531041
 GameObject:

@@ -3693,8 +3693,8 @@ MonoBehaviour:
     pos: {fileID: 1752958396}
     switchOtherCube: 0
   rightPos:
-  - pos: {fileID: 1880520682}
-    switchOtherCube: 1
+  - pos: {fileID: 0}
+    switchOtherCube: 0
   - pos: {fileID: 1720969525}
     switchOtherCube: 0
   - pos: {fileID: 0}
@@ -3881,7 +3881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &519307142
 Transform:
   m_ObjectHideFlags: 0
