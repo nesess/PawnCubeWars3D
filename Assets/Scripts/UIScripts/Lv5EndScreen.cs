@@ -8,14 +8,7 @@ public class Lv5EndScreen : MonoBehaviour
     [SerializeField]
     public GameObject EndScreen1;
 
-    [SerializeField]
-    public GameObject EndScreen2;
-
-    [SerializeField]
-    public GameObject EndScreen3;
-
-    [SerializeField]
-    public GameObject EndScreen4;
+    
 
     bool isGameOver;
     GameObject a;
@@ -37,21 +30,25 @@ public class Lv5EndScreen : MonoBehaviour
             int redNumber = a.GetComponent<Lv5EnemyDestructor>().totalNumOfEnemies;
             if(redNumber>=blueNumber)
             {
-                EndScreen4.SetActive(true);
+                UIManager.instance.levelStarsChecker(5, 0);
+                EndScreen1.SetActive(true);
             }
             else
             {
                 if (blueNumber-redNumber == 1)
                 {
+                    UIManager.instance.levelStarsChecker(5, 1);
                     EndScreen1.SetActive(true);
                 }
                 if (blueNumber-redNumber == 2)
                 {
-                    EndScreen2.SetActive(true);
+                    UIManager.instance.levelStarsChecker(5, 2);
+                    EndScreen1.SetActive(true);
                 }
                 if (blueNumber-redNumber == 3)
                 {
-                    EndScreen3.SetActive(true);
+                    UIManager.instance.levelStarsChecker(5, 3);
+                    EndScreen1.SetActive(true);
                 }
             }
         }

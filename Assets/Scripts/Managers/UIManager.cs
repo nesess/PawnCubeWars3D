@@ -29,8 +29,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject[] levelButtons;
 
+    [SerializeField]
+    private GameObject[] uýStars;
+    [SerializeField]
+    private TextMeshProUGUI endScCompleteText;
+    [SerializeField]
+    private TextMeshProUGUI endScLevelText;
+    [SerializeField]
+    private Button nextLevelButton;
 
-    public
 
     public static UIManager instance;
 
@@ -39,16 +46,11 @@ public class UIManager : MonoBehaviour
     {
         
 
-        if (UIManager.instance)
-        {
-            Destroy(base.gameObject);
-        }
-        else
-        {
-            UIManager.instance = this;
-        }
+        
 
     }
+
+    
 
     private void Start()
     {
@@ -56,9 +58,21 @@ public class UIManager : MonoBehaviour
         StartCoroutine(textFadeRoutine(touchStartText));
         gameSc.SetActive(false);
         checkLevels();
-        PlayerPrefs.SetInt("currentLevel", 1);
         levelText.text = "Level 1-" + PlayerPrefs.GetInt("currentLevel", 1);
-       
+        
+    
+
+        Time.timeScale = 1;
+  
+        if (UIManager.instance)
+        {
+            //Destroy(base.gameObject);
+        }
+        else
+        {
+            UIManager.instance = this;
+        }
+
     }
 
     public void startGameButton()
@@ -112,7 +126,10 @@ public class UIManager : MonoBehaviour
             switch (PlayerPrefs.GetInt("level" +(i+1).ToString(),0))
             {
                 case 0:
-                    levelButtons[i].GetComponent<Button>().interactable = false;
+                    if(!(PlayerPrefs.GetInt("level" + (i).ToString(), 0) >0))
+                    {
+                        levelButtons[i].GetComponent<Button>().interactable = false;
+                    }
                     levelButtons[i].transform.GetChild(0).gameObject.SetActive(true);
                     break;
                 case 1:
@@ -129,6 +146,34 @@ public class UIManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void levelStarsChecker(int level, int stars)
+    {
+       
+        if (PlayerPrefs.GetInt("level" + level.ToString(), 0) < stars)
+        {
+            PlayerPrefs.SetInt("level" + level.ToString(), stars);
+            PlayerPrefs.SetInt("totalStars", stars - PlayerPrefs.GetInt("level" + level.ToString(), 0));
+        }
+        endScUICheck(stars);
+    }
+
+    
+    private void endScUICheck(int stars)
+    {
+        if(stars > 0)
+        {
+            endScCompleteText.text = "COMPLETE";
+        }
+        else
+        {
+            endScCompleteText.text = "FAILED";
+        }
+        uýStars[stars].SetActive(true);
+        endScLevelText.text = "LEVEL 1 - " + PlayerPrefs.GetInt("currentLevel", 1).ToString();
+        checkEndButton();
+
     }
 
     public void closeLevelScreen()
@@ -151,15 +196,31 @@ public class UIManager : MonoBehaviour
 
     public void endScreenRetryButton()
     {
+
         SceneManager.LoadScene("Level " + PlayerPrefs.GetInt("currentLevel", 1));
+
     }
+
+    
 
     public void endScreenNextLevelButton()
     {
-
+        PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel", 1) + 1);
+        SceneManager.LoadScene("Level " + PlayerPrefs.GetInt("currentLevel", 1));
     }
 
+    private void checkEndButton()
+    {
+        if(PlayerPrefs.GetInt("currentLevel", 1) >= 5)
+        {
+            nextLevelButton.interactable = false;
+        }
+        else if(PlayerPrefs.GetInt("level" + PlayerPrefs.GetInt("currentLevel",1).ToString(),0) ==0)
+        {
+            nextLevelButton.interactable = false;
+        }
+    }
     
-    
+   
 
 }

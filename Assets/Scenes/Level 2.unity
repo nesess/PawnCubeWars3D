@@ -13931,9 +13931,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndScreen1: {fileID: 2112175669}
-  EndScreen2: {fileID: 2112175668}
-  EndScreen3: {fileID: 2112175667}
-  EndScreen4: {fileID: 2112175666}
 --- !u!4 &1952183903
 Transform:
   m_ObjectHideFlags: 0
@@ -15443,6 +15440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad03024fbe76794e874066a15a86f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  canMove: 1
 --- !u!1001 &2099203001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15647,10 +15646,6 @@ PrefabInstance:
       propertyPath: cameraParent
       value: 
       objectReference: {fileID: 7877702}
-    - target: {fileID: 4000350649303780619, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4000350649922411362, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -15739,35 +15734,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasFinal
       objectReference: {fileID: 0}
-    - target: {fileID: 4000350650109522049, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000350650549762331, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000350650706786404, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
---- !u!1 &2112175666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8135411050052372331, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-  m_PrefabInstance: {fileID: 2112175665}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2112175667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8135411051200833960, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-  m_PrefabInstance: {fileID: 2112175665}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2112175668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8135411050603260256, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
-  m_PrefabInstance: {fileID: 2112175665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2112175669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8135411049881386400, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}

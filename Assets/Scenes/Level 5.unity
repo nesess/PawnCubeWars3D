@@ -4419,6 +4419,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: faf04e7679cbfd44d823db806b249517, type: 3}
   m_PrefabInstance: {fileID: 634791894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &635770194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8135411049881386400, guid: cf7f6e79a4b167e4aa038268938dbfbb, type: 3}
+  m_PrefabInstance: {fileID: 1384147273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &637298040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12544,10 +12549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70d2922f41e56e47812425f54d485f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndScreen1: {fileID: 0}
-  EndScreen2: {fileID: 0}
-  EndScreen3: {fileID: 0}
-  EndScreen4: {fileID: 0}
+  EndScreen1: {fileID: 635770194}
 --- !u!1001 &1585795494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17222,6 +17224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad03024fbe76794e874066a15a86f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  canMove: 1
 --- !u!1 &2098288569
 GameObject:
   m_ObjectHideFlags: 0

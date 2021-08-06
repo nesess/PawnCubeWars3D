@@ -55,14 +55,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void levelStarsChecker(int level,int stars)
-    {
-        if(PlayerPrefs.GetInt("level" + level.ToString(), 0) < stars)
-        {
-            PlayerPrefs.SetInt("level" + level.ToString(), stars);
-            PlayerPrefs.SetInt("totalStars", stars - PlayerPrefs.GetInt("level" + level.ToString(), 0));
-        }
-    }
+    
 
     public void movePlayer(string moveLocation)
     {

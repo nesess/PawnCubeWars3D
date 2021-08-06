@@ -8,14 +8,6 @@ public class Lv4EndScreen : MonoBehaviour
     [SerializeField]
     public GameObject EndScreen1;
 
-    [SerializeField]
-    public GameObject EndScreen2;
-
-    [SerializeField]
-    public GameObject EndScreen3;
-
-    [SerializeField]
-    public GameObject EndScreen4;
 
     bool isGameOver;
     bool win;
@@ -40,12 +32,13 @@ public class Lv4EndScreen : MonoBehaviour
             
             if(!win)
             {
-                EndScreen4.SetActive(true);
+                EndScreen1.SetActive(true);
             }
             else
             {
                 if (win)
                 {
+                    UIManager.instance.levelStarsChecker(4, 3);
                     EndScreen1.SetActive(true);
                 }
                 //if (blueNumber-redNumber == 2)
