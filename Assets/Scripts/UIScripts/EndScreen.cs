@@ -37,20 +37,25 @@ public class EndScreen : MonoBehaviour
             int redNumber = a.GetComponent<EnemyDestructor>().totalNumOfEnemies;
             if(redNumber>=blueNumber)
             {
+                GameManager.instance.levelStarsChecker(1, 0);
                 EndScreen4.SetActive(true);
             }
             else
             {
                 if (blueNumber-redNumber == 1)
                 {
+                    GameManager.instance.levelStarsChecker(1, 1);
                     EndScreen1.SetActive(true);
+                    
                 }
                 if (blueNumber-redNumber == 2)
                 {
+                    GameManager.instance.levelStarsChecker(1, 2);
                     EndScreen2.SetActive(true);
                 }
                 if (blueNumber-redNumber == 3)
                 {
+                    GameManager.instance.levelStarsChecker(1, 3);
                     EndScreen3.SetActive(true);
                 }
             }

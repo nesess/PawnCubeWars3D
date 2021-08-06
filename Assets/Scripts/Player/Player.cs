@@ -5,11 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    private Joystick joystick;
-    private bool canMove = true;
+    public Joystick joystick;
+    public bool canMove = true;
 
     private void Awake()
     {
+        
         joystick = FindObjectOfType<Joystick>();
 
     }

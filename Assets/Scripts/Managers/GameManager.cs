@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
             GameManager.instance = this;
         }
 
-
     }
 
     private void Start()
@@ -54,6 +53,15 @@ public class GameManager : MonoBehaviour
         //player.transform.parent.transform.rotation = Quaternion.Euler(270,0,0);
         
         
+    }
+
+    public void levelStarsChecker(int level,int stars)
+    {
+        if(PlayerPrefs.GetInt("level" + level.ToString(), 0) < stars)
+        {
+            PlayerPrefs.SetInt("level" + level.ToString(), stars);
+            PlayerPrefs.SetInt("totalStars", stars - PlayerPrefs.GetInt("level" + level.ToString(), 0));
+        }
     }
 
     public void movePlayer(string moveLocation)

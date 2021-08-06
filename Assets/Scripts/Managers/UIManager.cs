@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject gameSc;
+    
+    public GameObject gameSc;
     [SerializeField]
     private GameObject startSc;
     [SerializeField]
@@ -29,7 +29,26 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject[] levelButtons;
 
-    
+
+    public
+
+    public static UIManager instance;
+
+
+    private void Awake()
+    {
+        
+
+        if (UIManager.instance)
+        {
+            Destroy(base.gameObject);
+        }
+        else
+        {
+            UIManager.instance = this;
+        }
+
+    }
 
     private void Start()
     {
@@ -37,11 +56,9 @@ public class UIManager : MonoBehaviour
         StartCoroutine(textFadeRoutine(touchStartText));
         gameSc.SetActive(false);
         checkLevels();
+        PlayerPrefs.SetInt("currentLevel", 1);
         levelText.text = "Level 1-" + PlayerPrefs.GetInt("currentLevel", 1);
-        PlayerPrefs.SetInt("level1", 3);
-       // PlayerPrefs.SetInt("level2", 2);
-        //PlayerPrefs.SetInt("level3", 1);
-       // PlayerPrefs.SetInt("level4", 3);
+       
     }
 
     public void startGameButton()
@@ -126,5 +143,23 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("currentLevel", level);
         SceneManager.LoadScene("Level " + level.ToString());
     }
+
+    public void endScreenReturnMenuButton()
+    {
+        SceneManager.LoadScene("Level " + PlayerPrefs.GetInt("currentLevel",1));
+    }
+
+    public void endScreenRetryButton()
+    {
+        SceneManager.LoadScene("Level " + PlayerPrefs.GetInt("currentLevel", 1));
+    }
+
+    public void endScreenNextLevelButton()
+    {
+
+    }
+
+    
+    
 
 }
