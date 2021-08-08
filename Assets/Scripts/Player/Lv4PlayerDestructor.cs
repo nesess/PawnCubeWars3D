@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Lv4PlayerDestructor : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject PlayerContainer;
     public GameObject Player;
     public Transform door;
@@ -68,6 +71,20 @@ public class Lv4PlayerDestructor : MonoBehaviour
                     Rigidbody r = PlayersToDestuct[i].GetComponent<Rigidbody>();
                     r.AddForce(new Vector3(xdirection, 90, zdirection));
                     yield return new WaitForSeconds(0.7f);
+
+                    int num;
+                    if(whiteTaken)
+                    {
+                        num = 4;
+                    }
+                    else
+                    {
+                        num = 3;
+                    }
+                    
+                    num = num - (i + 0);
+                    blueNumber.text = num.ToString();
+
                     Destroy(PlayersToDestuct[i]);
                 }
                     isDestroyed = true;                  

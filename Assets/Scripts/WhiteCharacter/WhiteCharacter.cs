@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WhiteCharacter : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject playerOriginal;
     public GameObject WhitePlayer;
     public GameObject playerContainer;
@@ -28,6 +31,7 @@ public class WhiteCharacter : MonoBehaviour
             PlayerClone.transform.Rotate(0, 180, 0);
             PlayerClone.transform.parent = playerContainer.transform;
             turned = true;
+            blueNumber.text = '4'.ToString();
         }
     }
 

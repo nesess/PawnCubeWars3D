@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Lv4SecondEnemyDestructor : MonoBehaviour
 {
+    public TextMeshProUGUI redNumber;
+
     public GameObject EnemyContainer;
 
     GameObject cloner;
@@ -72,6 +75,8 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
                     r.AddForce(new Vector3(xdirection,90,zdirection));
                     yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
+                        int num = 3 - (i + 1);
+                        redNumber.text = num.ToString();
                     isDestroyed = true;
                     win = true;
                 }
@@ -91,6 +96,8 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
                         r.AddForce(new Vector3(xdirection, 90, zdirection));
                         yield return new WaitForSeconds(0.7f);
                         Destroy(Enemies[i]);
+                        int num = 3 - (i + 1);
+                        redNumber.text = num.ToString();
                         isDestroyed = true;
                     }
                 }
@@ -109,6 +116,8 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
                     r.AddForce(new Vector3(xdirection, 90, zdirection));
                     yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
+                        int num = 3 - (i + 1);
+                        redNumber.text = num.ToString();
                     isDestroyed = true;
                 }
             }
@@ -127,6 +136,8 @@ public class Lv4SecondEnemyDestructor : MonoBehaviour
                         r.AddForce(new Vector3(xdirection, 90, zdirection));
                         yield return new WaitForSeconds(0.7f);
                         Destroy(Enemies[i]);
+                        int num = 3 - (i + 1);
+                        redNumber.text = num.ToString();
                         isDestroyed = true;
                     }
                 }

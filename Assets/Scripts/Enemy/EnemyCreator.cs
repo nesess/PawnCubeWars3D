@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyCreator : MonoBehaviour
 {
+    public TextMeshProUGUI redNumber;
+
     public GameObject enemyOriginal;
     public GameObject enemyContainer;
     public int totalNumOfEnemies;
@@ -19,6 +22,7 @@ public class EnemyCreator : MonoBehaviour
             PlayerClone.name = "EnemyClone" + (i + 1);
         }
         totalNumOfEnemies = i;
+        redNumber.text = '3'.ToString();
     }
 
     // Update is called once per frame

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Lv4EnemyDestructor : MonoBehaviour
 {
+    public TextMeshProUGUI redNumber;
+
     public GameObject EnemyContainer;
 
     GameObject a;
@@ -60,6 +63,8 @@ public class Lv4EnemyDestructor : MonoBehaviour
                     r.AddForce(new Vector3(xdirection, 90, zdirection));
                     yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
+                    int num = 5 - (i + 1);
+                    redNumber.text = num.ToString();
                     isDestroyed = true;
                 }
 

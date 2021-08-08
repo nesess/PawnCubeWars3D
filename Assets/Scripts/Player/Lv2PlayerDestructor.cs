@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Lv2PlayerDestructor : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject PlayerContainer;
     public GameObject Player;
     bool isDestroyed = false;
@@ -45,11 +48,12 @@ public class Lv2PlayerDestructor : MonoBehaviour
         }
 
         totalNumOfEnemies = 3;
-       
 
 
-        
-        
+        int num = totalNumOfPlayers - 1;
+        blueNumber.text = num.ToString();
+
+
         StartCoroutine(DestructPlayers());
 
         IEnumerator DestructPlayers()
@@ -75,6 +79,8 @@ public class Lv2PlayerDestructor : MonoBehaviour
                         r.AddForce(new Vector3(xdirection, 90, zdirection));
                         yield return new WaitForSeconds(0.7f);
                         Destroy(PlayersToDestuct[i]);
+                        int num = totalNumOfPlayers - (i + 1);
+                        blueNumber.text = num.ToString();
                     }
             isDestroyed = true;
         }
@@ -94,6 +100,8 @@ public class Lv2PlayerDestructor : MonoBehaviour
                         r.AddForce(new Vector3(xdirection, 90, zdirection));
                         yield return new WaitForSeconds(0.7f);
                         Destroy(PlayersToDestuct[i]);
+                        int num = totalNumOfPlayers - (i + 1);
+                        blueNumber.text = num.ToString();
                     }
             isDestroyed = true;
         }

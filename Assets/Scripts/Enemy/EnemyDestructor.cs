@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyDestructor : MonoBehaviour
 {
+    public TextMeshProUGUI redNumber;
+
     public GameObject EnemyContainer;
 
     GameObject a;
@@ -11,7 +14,7 @@ public class EnemyDestructor : MonoBehaviour
 
     public int totalNumOfPlayers;
     public int totalNumOfEnemies;
-
+    
 
     float xdirection;
     float zdirection;
@@ -38,7 +41,7 @@ public class EnemyDestructor : MonoBehaviour
         {          
         totalNumOfPlayers = a.GetComponent<ClonePlayer>().totalNumOfPlayers;
         totalNumOfEnemies = b.GetComponent<Lv1EnemyCreator>().totalNumOfEnemies;
-
+        
 
         StartCoroutine(DestroyEnemies());
        
@@ -63,6 +66,8 @@ public class EnemyDestructor : MonoBehaviour
                     r.AddForce(new Vector3(xdirection,90,zdirection));
                     yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
+                    int num = totalNumOfEnemies - (i+1);
+                    redNumber.text = num.ToString();
                     isDestroyed = true;
                 }
             }
@@ -81,6 +86,8 @@ public class EnemyDestructor : MonoBehaviour
                     r.AddForce(new Vector3(xdirection, 90, zdirection));
                     yield return new WaitForSeconds(0.7f);
                     Destroy(Enemies[i]);
+                    int num = totalNumOfEnemies - (i+1);
+                    redNumber.text = num.ToString();
                     isDestroyed = true;
                 }
             }

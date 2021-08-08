@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerInitialSpawner : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject playerOriginal;
     public GameObject playerContainer;
     public int initialNumberOfPlayers=3;
@@ -25,6 +28,7 @@ public class PlayerInitialSpawner : MonoBehaviour
 
             PlayerClone.name = "PlayerClone" + (i + 1);
         }
+        blueNumber.text = initialNumberOfPlayers.ToString();
 
     }
 

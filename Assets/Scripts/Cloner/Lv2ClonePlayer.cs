@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class Lv2ClonePlayer : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject Player;
     public GameObject CloneText;
     public GameObject playerOriginal;
@@ -83,6 +86,8 @@ public class Lv2ClonePlayer : MonoBehaviour
         totalNumOfPlayers = numOfPlayers + i;
         cloned = true;
         Destroy(CloneText);
+        int num = 2 * playerNumber;
+        blueNumber.text = num.ToString();
         //playerContainer.transform.Rotate(0,-90,0);
 
     }

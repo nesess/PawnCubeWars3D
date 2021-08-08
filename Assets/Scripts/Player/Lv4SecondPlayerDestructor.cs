@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Lv4SecondPlayerDestructor : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject PlayerContainer;
     public GameObject Player;
     bool isDestroyed = false;
@@ -40,6 +43,9 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
         whiteTaken = white.GetComponent<WhiteCharacter>().turned;
         numberFromCloner = cloner.GetComponent<Lv4ClonePlayer>().numberToDestructor;
 
+        int num = numberFromCloner - 1;
+        blueNumber.text = num.ToString();
+
         StartCoroutine(DestructPlayers());
 
         IEnumerator DestructPlayers()
@@ -65,7 +71,10 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
                     r.AddForce(new Vector3(xdirection, 90, zdirection));
                     yield return new WaitForSeconds(0.7f);
                     Destroy(PlayersToDestuct[i]);
-                }
+                        int num = 4;
+                        num = num - (i + 1);
+                        blueNumber.text = num.ToString();
+                    }
                 isDestroyed = true;
                 }
                 else if (numberFromCloner == 2 && whiteTaken)
@@ -83,6 +92,9 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
                         r.AddForce(new Vector3(xdirection, 90, zdirection));
                         yield return new WaitForSeconds(0.7f);
                         Destroy(PlayersToDestuct[i]);
+                        int num = 3;
+                        num = num - (i + 0);
+                        blueNumber.text = num.ToString();
                     }
                 }
                 else if(numberFromCloner == 2 && !whiteTaken)
@@ -100,6 +112,9 @@ public class Lv4SecondPlayerDestructor : MonoBehaviour
                         r.AddForce(new Vector3(xdirection, 90, zdirection));
                         yield return new WaitForSeconds(0.7f);
                         Destroy(PlayersToDestuct[i]);
+                        int num = 2;
+                        num = num - (i + 0);
+                        blueNumber.text = num.ToString();
                     }
                     isDestroyed = true;
                 }

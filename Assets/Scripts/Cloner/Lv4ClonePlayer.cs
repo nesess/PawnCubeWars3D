@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class Lv4ClonePlayer : MonoBehaviour
 {
+    public TextMeshProUGUI blueNumber;
+
     public GameObject Player;
     public GameObject CloneText;
     public GameObject playerOriginal;
@@ -47,6 +50,7 @@ public class Lv4ClonePlayer : MonoBehaviour
                 PlayerClone.transform.parent = playerContainer.transform;
                 PlayerClone.name = "PlayerClone" + (i + 1);
                 numberToDestructor = 4;
+                blueNumber.text = '4'.ToString();
             }
         }
         else
@@ -55,6 +59,7 @@ public class Lv4ClonePlayer : MonoBehaviour
             PlayerClone.transform.parent = playerContainer.transform;
             PlayerClone.name = "PlayerClone";
             numberToDestructor = 2;
+            blueNumber.text = '2'.ToString();
         }
         cloned = true;
         Destroy(CloneText);
