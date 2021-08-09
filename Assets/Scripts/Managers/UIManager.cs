@@ -153,8 +153,9 @@ public class UIManager : MonoBehaviour
        
         if (PlayerPrefs.GetInt("level" + level.ToString(), 0) < stars)
         {
+            PlayerPrefs.SetInt("totalStars", PlayerPrefs.GetInt("totalStars",0) + (stars - PlayerPrefs.GetInt("level" + level.ToString(),0)));
             PlayerPrefs.SetInt("level" + level.ToString(), stars);
-            PlayerPrefs.SetInt("totalStars", stars - PlayerPrefs.GetInt("level" + level.ToString(), 0));
+            
         }
         endScUICheck(stars);
     }
