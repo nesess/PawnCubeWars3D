@@ -29,19 +29,19 @@ public class Player : MonoBehaviour
         if (canMove)
         {
 
-            if (joystick.Horizontal > 0.8f)
+            if (joystick.Horizontal > 0.6f)
             {
                 GameManager.instance.movePlayer("right");
             }
-            else if (joystick.Horizontal < -0.8f)
+            else if (joystick.Horizontal < -0.6f)
             {
                 GameManager.instance.movePlayer("left");
             }
-            else if (joystick.Vertical > 0.8f)
+            else if (joystick.Vertical > 0.6f)
             {
                 GameManager.instance.movePlayer("up");
             }
-            else if (joystick.Vertical < -0.8f)
+            else if (joystick.Vertical < -0.6f)
             {
                 GameManager.instance.movePlayer("down");
             }
